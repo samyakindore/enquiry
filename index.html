@@ -201,7 +201,6 @@
 </head>
 <body>
 
-    <!-- Header Section -->
     <header>
         <h1>Samyak Computer Classes</h1>
         <p>स्किल भी, करियर भी</p>
@@ -210,16 +209,13 @@
 
     <div class="container">
 
-        <!-- Limited Time Discount Banner -->
         <div class="offer-banner">
             🔥 Special Offer: Get a Flat 20% DISCOUNT on all courses! Fill out the form below to lock in your offer.
         </div>
 
-        <!-- Course Overview Section -->
         <h2>Our Trending Courses</h2>
         <div class="course-grid">
             
-            <!-- Course 1 -->
             <div class="course-card">
                 <h3>Financial Accounting</h3>
                 <ul>
@@ -230,7 +226,6 @@
                 </ul>
             </div>
 
-            <!-- Course 2 -->
             <div class="course-card">
                 <h3>Data Analytics</h3>
                 <ul>
@@ -241,7 +236,6 @@
                 </ul>
             </div>
 
-            <!-- Course 3 -->
             <div class="course-card">
                 <h3>Programming Core</h3>
                 <ul>
@@ -254,11 +248,9 @@
 
         </div>
 
-        <!-- Lead Capture Form Section -->
         <h2>Claim Your 20% Discount</h2>
         <div class="form-section">
-            <!-- Tip: Update the action attribute if you connect an email/form backend later -->
-            <form action="#" method="POST" onsubmit="alert('Thank you! Your 20% discount code has been locked in. Our counselor will contact you shortly.'); return false;">
+            <form id="lead-form" action="https://script.google.com/macros/s/AKfycbxEsk5-LGIqBDLY_S288Or1B9Jd0HNjWx8tbhy9KHOXoyfSV0IO4m4O1BAl0_aT6Dw0/exec" method="POST">
                 
                 <div class="form-group">
                     <label for="student-name">Full Name</label>
@@ -282,13 +274,46 @@
                     </select>
                 </div>
 
-                <button type="submit" class="btn-submit">Claim 20% Off Now</button>
+                <button type="submit" id="submit-btn" class="btn-submit">Claim 20% Off Now</button>
             </form>
         </div>
 
-    </div>
+    </div> <script>
+        const form = document.getElementById('lead-form');
+        const submitBtn = document.getElementById('submit-btn');
 
-    <!-- Footer Area -->
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            submitBtn.textContent = "Submitting...";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.result === 'success') {
+                    alert('Thank you! Your 20% discount code has been locked in. Our counselor will contact you shortly.');
+                    form.reset();
+                } else {
+                    alert('Something went wrong. Please try again.');
+                }
+            })
+            .catch(error => {
+                alert('Thank you! Your 20% discount code has been locked in. Our counselor will contact you shortly.');
+                form.reset();
+            })
+            .finally(() => {
+                submitBtn.textContent = "Claim 20% Off Now";
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
+
     <footer>
         <p>&copy; 2026 Samyak Computer Classes - Bhanwarkua, Indore. All Rights Reserved.</p>
     </footer>
