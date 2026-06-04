@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samyak Computer Classes - Bhanwarkua</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header / Hero Section */
+        header {
+            background: linear-gradient(135deg, #0d6efd, #003580);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .branch-tag {
+            background-color: #ffc107;
+            color: #333;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Offer Banner */
+        .offer-banner {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            color: #856404;
+            padding: 20px;
+            border-radius: 4px;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        /* Section Headings */
+        h2 {
+            text-align: center;
+            color: #003580;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #ffc107;
+            margin: 10px auto 0;
+        }
+
+        /* Grid Layout for Courses */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .course-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid #0d6efd;
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-card h3 {
+            color: #0d6efd;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .course-card ul {
+            list-style: none;
+        }
+
+        .course-card ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .course-card ul li::before {
+            content: "✓";
+            color: #28a745;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Form Section */
+        .form-section {
+            background: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 3px rgba(13,110,253,0.25);
+        }
+
+        button.btn-submit {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button.btn-submit:hover {
+            background-color: #218838;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #343a40;
+            color: white;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .form-section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Samyak Computer Classes</h1>
+        <p>स्किल भी, करियर भी</p>
+        <span class="branch-tag">Bhanwarkua Branch, Indore</span>
+    </header>
+
+    <div class="container">
+
+        <!-- Limited Time Discount Banner -->
+        <div class="offer-banner">
+            🔥 Special Offer: Get a Flat 20% DISCOUNT on all courses! Fill out the form below to lock in your offer.
+        </div>
+
+        <!-- Course Overview Section -->
+        <h2>Our Trending Courses</h2>
+        <div class="course-grid">
+            
+            <!-- Course 1 -->
+            <div class="course-card">
+                <h3>Financial Accounting</h3>
+                <ul>
+                    <li>Tally Prime with GST</li>
+                    <li>Advanced Excel for Analytics</li>
+                    <li>Balance Sheet Management</li>
+                    <li>Taxation & E-Filing</li>
+                </ul>
+            </div>
+
+            <!-- Course 2 -->
+            <div class="course-card">
+                <h3>Data Analytics</h3>
+                <ul>
+                    <li>Power BI Dashboards</li>
+                    <li>SQL Database Mastery</li>
+                    <li>Data Visualization</li>
+                    <li>Business Intelligence</li>
+                </ul>
+            </div>
+
+            <!-- Course 3 -->
+            <div class="course-card">
+                <h3>Programming Core</h3>
+                <ul>
+                    <li>Python Development</li>
+                    <li>Java (Core & Advanced)</li>
+                    <li>Logic Building & Algorithms</li>
+                    <li>Project-Based Learning</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Lead Capture Form Section -->
+        <h2>Claim Your 20% Discount</h2>
+        <div class="form-section">
+            <!-- Tip: Update the action attribute if you connect an email/form backend later -->
+            <form action="#" method="POST" onsubmit="alert('Thank you! Your 20% discount code has been locked in. Our counselor will contact you shortly.'); return false;">
+                
+                <div class="form-group">
+                    <label for="student-name">Full Name</label>
+                    <input type="text" id="student-name" name="name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="student-phone">Phone Number</label>
+                    <input type="tel" id="student-phone" name="phone" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="course-interest">Course You are Interested In</label>
+                    <select id="course-interest" name="course" required>
+                        <option value="" disabled selected>Select a course</option>
+                        <option value="Tally & Accounting">Financial Accounting / Tally with GST</option>
+                        <option value="Data Analytics">Data Analytics (Power BI / SQL)</option>
+                        <option value="Python Programming">Python Programming</option>
+                        <option value="Java Programming">Java Programming</option>
+                        <option value="Other">Other Vocational Training</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">Claim 20% Off Now</button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Footer Area -->
+    <footer>
+        <p>&copy; 2026 Samyak Computer Classes - Bhanwarkua, Indore. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
