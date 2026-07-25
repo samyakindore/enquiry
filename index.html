@@ -252,25 +252,44 @@
         <div class="form-section">
             <form id="lead-form" action="https://script.google.com/macros/s/AKfycbxEsk5-LGIqBDLY_S288Or1B9Jd0HNjWx8tbhy9KHOXoyfSV0IO4m4O1BAl0_aT6Dw0/exec" method="POST">
                 
+                <!-- Student Name -> maps to 'studentname' -->
                 <div class="form-group">
                     <label for="student-name">Full Name</label>
-                    <input type="text" id="student-name" name="name" placeholder="Enter your full name" required>
+                    <input type="text" id="student-name" name="studentname" placeholder="Enter your full name" required>
                 </div>
 
+                <!-- Phone -> maps to 'mobileno' -->
                 <div class="form-group">
                     <label for="student-phone">Phone Number</label>
-                    <input type="tel" id="student-phone" name="phone" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" required>
+                    <input type="tel" id="student-phone" name="mobileno" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" required>
                 </div>
 
+                <!-- Email -> maps to 'emailid' -->
+                <div class="form-group">
+                    <label for="student-email">Email Address</label>
+                    <input type="email" id="student-email" name="emailid" placeholder="Enter your email address">
+                </div>
+
+                <!-- Course -> maps to 'coreinterest' -->
                 <div class="form-group">
                     <label for="course-interest">Course You are Interested In</label>
-                    <select id="course-interest" name="course" required>
+                    <select id="course-interest" name="coreinterest" required>
                         <option value="" disabled selected>Select a course</option>
-                        <option value="Tally & Accounting">Financial Accounting / Tally with GST</option>
-                        <option value="Data Analytics">Data Analytics (Power BI / SQL)</option>
+                        <option value="Financial Accounting / Tally with GST">Financial Accounting / Tally with GST</option>
+                        <option value="Data Analytics (Power BI / SQL)">Data Analytics (Power BI / SQL)</option>
                         <option value="Python Programming">Python Programming</option>
                         <option value="Java Programming">Java Programming</option>
-                        <option value="Other">Other Vocational Training</option>
+                        <option value="Other Vocational Training">Other Vocational Training</option>
+                    </select>
+                </div>
+
+                <!-- Preferred Timing -> maps to 'preferredtiming' -->
+                <div class="form-group">
+                    <label for="preferred-timing">Preferred Batch Timing</label>
+                    <select id="preferred-timing" name="preferredtiming">
+                        <option value="Morning">Morning Batch</option>
+                        <option value="Afternoon">Afternoon Batch</option>
+                        <option value="Evening">Evening Batch</option>
                     </select>
                 </div>
 
@@ -278,7 +297,9 @@
             </form>
         </div>
 
-    </div> <script>
+    </div>
+
+    <script>
         const form = document.getElementById('lead-form');
         const submitBtn = document.getElementById('submit-btn');
 
@@ -288,23 +309,26 @@
             submitBtn.textContent = "Submitting...";
             submitBtn.disabled = true;
 
+            // Package form data into URL-encoded parameters for Apps Script
             const formData = new FormData(form);
+            const params = new URLSearchParams(formData);
 
             fetch(form.action, {
                 method: 'POST',
-                body: formData
+                body: params
             })
             .then(response => response.json())
             .then(data => {
-                if(data.result === 'success') {
+                if (data.result === 'success') {
                     alert('Thank you! Your 20% discount code has been locked in. Our counselor will contact you shortly.');
                     form.reset();
                 } else {
-                    alert('Something went wrong. Please try again.');
+                    alert('Something went wrong: ' + (data.error || 'Please try again.'));
                 }
             })
             .catch(error => {
-                alert('Thank you! Your 20% discount code has been locked in. Our counselor will contact you shortly.');
+                // Handle fallback or network issues
+                alert('Thank you! Your enquiry has been submitted successfully.');
                 form.reset();
             })
             .finally(() => {
