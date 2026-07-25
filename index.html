@@ -349,9 +349,8 @@
         <div class="form-section">
             <h2>Course Enquiry Form</h2>
 
-            <form id="lead-form" action="https://script.google.com/macros/s/AKfycbzVx1LmdKyNwu6bE7LvL2AlhRdazCrh-BgC1gQrM1VWeh0hOHX3PxdA5terBmLYQSPY/exec" method="POST">
+            <form id="lead-form" action="https://script.google.com/macros/s/AKfycbxV2_yYrxwnD-2CCPXbqpZTAWxKbySGde7oBeoouvo0CBGdqMfqny40e5p1dz5y-zyc/exec" method="POST">
                 
-                <!-- Fixed name attribute to 'course' -->
                 <input type="hidden" id="course-input" name="course" required>
 
                 <div class="form-grid">
@@ -443,7 +442,7 @@
                         </select>
                     </div>
 
-                    <!-- Source (Fixed name attribute to 'source') -->
+                    <!-- Source -->
                     <div class="form-group full-width">
                         <label for="lead-source">How Did You Hear About Us? (Source)</label>
                         <select id="lead-source" name="source">
@@ -556,14 +555,14 @@
 
         renderCourses();
 
-        // Optimized Form Submit with JSON POST payload
+        // Fixed Form Submission logic matching CORS requirements
         const form = document.getElementById('lead-form');
         const submitBtn = document.getElementById('submit-btn');
 
         form.addEventListener('submit', function(e) {
             e.preventDefault(); 
 
-            if(!hiddenInput.value) {
+            if (!hiddenInput.value) {
                 alert('Please select a course of interest from the list.');
                 return;
             }
@@ -572,12 +571,18 @@
             submitBtn.disabled = true;
 
             const formData = new FormData(form);
-            const payload = {};
-            formData.forEach((value, key) => { payload[key] = value; });
+            const urlParams = new URLSearchParams();
+
+            formData.forEach((value, key) => {
+                urlParams.append(key, value);
+            });
 
             fetch(form.action, {
                 method: 'POST',
-                body: JSON.stringify(payload)
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: urlParams.toString()
             })
             .then(response => response.json())
             .then(data => {
