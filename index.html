@@ -23,17 +23,31 @@
         header {
             background: linear-gradient(135deg, #0d6efd, #003580);
             color: white;
-            padding: 50px 20px;
+            padding: 40px 20px;
             text-align: center;
         }
 
+        /* Logo Branding Placeholder */
+        .logo-container {
+            margin-bottom: 15px;
+        }
+
+        .brand-logo {
+            max-width: 180px;
+            height: auto;
+            background-color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
         header h1 {
-            font-size: 2.3rem;
-            margin-bottom: 8px;
+            font-size: 2.2rem;
+            margin-bottom: 6px;
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             opacity: 0.95;
             font-weight: 500;
         }
@@ -41,12 +55,12 @@
         .branch-tag {
             background-color: #ffc107;
             color: #333;
-            padding: 5px 15px;
+            padding: 4px 14px;
             border-radius: 20px;
             font-weight: bold;
             display: inline-block;
-            margin-top: 12px;
-            font-size: 0.9rem;
+            margin-top: 10px;
+            font-size: 0.88rem;
         }
 
         /* Container Layout */
@@ -68,7 +82,7 @@
 
         .welcome-card h3 {
             color: #003580;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-size: 1.25rem;
         }
 
@@ -88,7 +102,7 @@
         .form-section h2 {
             color: #003580;
             margin-bottom: 25px;
-            font-size: 1.5rem;
+            font-size: 1.45rem;
             border-bottom: 2px solid #e9ecef;
             padding-bottom: 10px;
         }
@@ -168,6 +182,10 @@
 <body>
 
     <header>
+        <!-- Logo Image Placeholder -->
+        <div class="logo-container">
+            <img src="logo.png" alt="Samyak Computer Classes Logo" class="brand-logo" onerror="this.style.display='none'">
+        </div>
         <h1>Samyak Computer Classes</h1>
         <p>स्किल भी, करियर भी</p>
         <span class="branch-tag">Bhanwarkua Branch, Indore</span>
@@ -178,7 +196,7 @@
         <!-- Welcome & Instructions Card -->
         <div class="welcome-card">
             <h3>Welcome to Samyak Computer Classes!</h3>
-            <p>Please take a moment to complete this enquiry form with your academic details and career interests. Our counselor will review your goals and guide you toward the best course and training schedule.</p>
+            <p>Please complete this enquiry form with your academic details and career interest. Our counselor will guide you through the best course options, syllabus details, and training schedules.</p>
         </div>
 
         <div class="form-section">
@@ -219,17 +237,53 @@
                         </select>
                     </div>
 
-                    <!-- Core Interest / Course -->
+                    <!-- Core Interest / Course (Grouped High-Level Categories) -->
                     <div class="form-group">
                         <label for="course-interest">Course Interested In *</label>
                         <select id="course-interest" name="coreinterest" required>
-                            <option value="" disabled selected>Select Course</option>
-                            <option value="Financial Accounting / Tally Prime">Financial Accounting / Tally Prime with GST</option>
-                            <option value="Data Analytics (Power BI / SQL / Excel)">Data Analytics (Power BI / SQL / Excel)</option>
-                            <option value="Python Programming">Python Programming</option>
-                            <option value="Java Full Stack">Java Full Stack Development</option>
-                            <option value="Web Development">Web Development (HTML/CSS/JS)</option>
-                            <option value="Other Vocational Training">Other / Custom Course</option>
+                            <option value="" disabled selected>Select Course Category</option>
+                            
+                            <optgroup label="Accounting & Finance">
+                                <option value="Financial Accounting / Tally Prime & GST">Financial Accounting / Tally Prime with GST</option>
+                                <option value="Advance Diploma in Finance Accounting">Advance Diploma in Finance Accounting</option>
+                                <option value="Diploma in Banking & SAP FICO">Diploma in Banking & SAP FICO</option>
+                            </optgroup>
+
+                            <optgroup label="Data, Analytics & AI">
+                                <option value="Data Analytics (Power BI / SQL / Advanced Excel)">Data Analytics (Power BI / SQL / Excel)</option>
+                                <option value="Diploma / Advance Diploma in Data Analytics">Advance Diploma in Data Analytics</option>
+                                <option value="Data Science & Machine Learning">Data Science & AI / ML</option>
+                            </optgroup>
+
+                            <optgroup label="Software & Web Development">
+                                <option value="Full Stack Development (Java / Python / MERN)">Full Stack Development (Java / Python / MERN)</option>
+                                <option value="Programming Languages (C, C++, Java, Python)">Core Programming (C / C++ / Java / Python)</option>
+                                <option value="Web Development & React JS">Web Development & React JS</option>
+                                <option value="Game Development & DSA">Game Development & DSA</option>
+                            </optgroup>
+
+                            <optgroup label="Design, Multimedia & Animation">
+                                <option value="Graphic Designing (CorelDRAW / Illustrator / Canva)">Graphic Designing (CorelDRAW / Illustrator / Canva)</option>
+                                <option value="Advance Diploma in 3D Animation">Advance Diploma in 3D Animation</option>
+                                <option value="Video Editing (Filmora)">Video Editing (Filmora)</option>
+                            </optgroup>
+
+                            <optgroup label="Cyber Security & Networking">
+                                <option value="Ethical Hacking & Cyber Security">Ethical Hacking & Cyber Security</option>
+                                <option value="PLC SCADA & Industrial Automation">PLC SCADA & Industrial Automation</option>
+                            </optgroup>
+
+                            <optgroup label="Digital Marketing & Business">
+                                <option value="Digital Marketing (SEO / Meta Ads)">Digital Marketing (SEO / Meta Ads)</option>
+                            </optgroup>
+
+                            <optgroup label="Office Applications & Computer Basics">
+                                <option value="Basic Computer & MS Office / Advanced Excel">Basic Computer & MS Office / Excel</option>
+                                <option value="Diploma in Computer Applications (DCA / ADCA)">Diploma in Computer Applications (DCA / ADCA)</option>
+                                <option value="Typing / Spoken English / Placement Readiness">Typing / Spoken English / Placement Readiness</option>
+                            </optgroup>
+
+                            <option value="Other Custom Course">Other / Custom Course</option>
                         </select>
                     </div>
 
@@ -245,16 +299,6 @@
                         </select>
                     </div>
 
-                    <!-- Preferred Slot -->
-                    <div class="form-group">
-                        <label for="preferred-slot">Preferred Slot</label>
-                        <select id="preferred-slot" name="preferredslot">
-                            <option value="Weekdays">Regular (Weekdays)</option>
-                            <option value="Weekends">Weekend Special</option>
-                            <option value="Fast-Track">Fast-Track Batch</option>
-                        </select>
-                    </div>
-
                     <!-- Preferred Timing -->
                     <div class="form-group">
                         <label for="preferred-timing">Preferred Time</label>
@@ -266,9 +310,9 @@
                     </div>
 
                     <!-- Counselor Name (Filled at desk) -->
-                    <div class="form-group full-width">
+                    <div class="form-group">
                         <label for="counselor-name">Attending Counselor Name</label>
-                        <input type="text" id="counselor-name" name="counselor" placeholder="Counselor Name (e.g., Anjali / Rahul)">
+                        <input type="text" id="counselor-name" name="counselor" placeholder="Counselor Name">
                     </div>
 
                 </div>
@@ -299,7 +343,7 @@
             .then(response => response.json())
             .then(data => {
                 if (data.result === 'success') {
-                    alert('Enquiry successfully recorded! Enquiry ID: ' + (data.row ? 'ENQ-' + (1000 + data.row - 1) : 'Generated'));
+                    alert('Enquiry successfully recorded!');
                     form.reset();
                 } else {
                     alert('Error saving record: ' + (data.error || 'Please try again.'));
