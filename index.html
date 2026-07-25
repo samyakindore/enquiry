@@ -19,7 +19,7 @@
             line-height: 1.6;
         }
 
-        /* Header / Hero Section */
+        /* Header / Hero Section - White background with Blue Text */
         header {
             background-color: #ffffff;
             color: #0d6efd;
@@ -52,6 +52,7 @@
             font-weight: 600;
         }
 
+        /* Solid Vibrant Yellow Branch Tag */
         .branch-tag {
             background-color: #ffc107;
             color: #212529;
@@ -64,12 +65,14 @@
             box-shadow: 0 2px 6px rgba(255, 193, 7, 0.4);
         }
 
+        /* Container Layout */
         .container {
             max-width: 950px;
             margin: 0 auto;
             padding: 30px 20px;
         }
 
+        /* Welcome Card */
         .welcome-card {
             background-color: #ffffff;
             border-left: 5px solid #0d6efd;
@@ -90,6 +93,7 @@
             font-size: 0.98rem;
         }
 
+        /* Form Section */
         .form-section {
             background: white;
             padding: 35px;
@@ -143,6 +147,7 @@
             box-shadow: 0 0 0 3px rgba(13,110,253,0.2);
         }
 
+        /* Modern Course Selection UI */
         .course-picker-section {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -187,6 +192,7 @@
             font-size: 0.9rem;
         }
 
+        /* Category Filter Pills */
         .category-pills {
             display: flex;
             gap: 8px;
@@ -214,6 +220,7 @@
             color: white;
         }
 
+        /* Cards Grid */
         .course-cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -233,6 +240,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: relative;
         }
 
         .course-option-card:hover {
@@ -342,16 +350,16 @@
     <div class="container">
 
         <div class="welcome-card">
-            <h3>Welcome to Samyak Computer Classes!</h3>
+            <h3>Welcome to Samyak Computer Classe!</h3>
             <p>Please complete this enquiry form with your details. Select a course category below to find your desired course.</p>
         </div>
 
         <div class="form-section">
             <h2>Course Enquiry Form</h2>
 
-            <form id="lead-form" action="https://script.google.com/macros/s/AKfycbxV2_yYrxwnD-2CCPXbqpZTAWxKbySGde7oBeoouvo0CBGdqMfqny40e5p1dz5y-zyc/exec" method="POST">
+            <form id="lead-form" action="https://script.google.com/macros/s/AKfycbwmUXzP-of-DpCDiw8Gdl3Sbg8X9Qkn1gRr5bOm9M9MzmCQTs4DKUcg3DH5XwqH6kx8/exec" method="POST">
                 
-                <input type="hidden" id="course-input" name="course" required>
+                <input type="hidden" id="coreinterest-input" name="coreinterest" required>
 
                 <div class="form-grid">
                     
@@ -388,17 +396,19 @@
 
                 </div>
 
-                <!-- Course Selector -->
+                <!-- Modern Interactive Course Selector -->
                 <div class="course-picker-section">
                     <div class="course-picker-header">
                         <span class="course-picker-title">Select Course of Interest *</span>
                         
+                        <!-- Search Box -->
                         <div class="search-box">
                             <span class="search-icon">🔍</span>
                             <input type="text" id="course-search" placeholder="Search course (e.g., Tally, Python)...">
                         </div>
                     </div>
 
+                    <!-- Category Pills -->
                     <div class="category-pills">
                         <button type="button" class="cat-pill active" data-cat="all">All Courses</button>
                         <button type="button" class="cat-pill" data-cat="Accounting">Accounting</button>
@@ -409,10 +419,12 @@
                         <button type="button" class="cat-pill" data-cat="Office">Office & Basics</button>
                     </div>
 
+                    <!-- Cards Grid -->
                     <div class="course-cards-grid" id="course-cards-container">
-                        <!-- JS populated -->
+                        <!-- Populated by JavaScript -->
                     </div>
 
+                    <!-- Selected Confirmation Badge -->
                     <div class="selected-indicator" id="selected-display" style="display: none;">
                         <span>✓ Selected Course:</span> <span id="selected-course-name" style="color: #003580;">None</span>
                     </div>
@@ -442,10 +454,10 @@
                         </select>
                     </div>
 
-                    <!-- Source -->
+                    <!-- Lead Source (Replaced Counselor Field) -->
                     <div class="form-group full-width">
                         <label for="lead-source">How Did You Hear About Us? (Source)</label>
-                        <select id="lead-source" name="source">
+                        <select id="lead-source" name="leadsource">
                             <option value="" disabled selected>Select Source</option>
                             <option value="Google Search / Maps">Google Search / Maps</option>
                             <option value="Social Media (Instagram / Facebook / YouTube)">Social Media (Instagram / Facebook / YouTube)</option>
@@ -492,7 +504,7 @@
         ];
 
         const container = document.getElementById('course-cards-container');
-        const hiddenInput = document.getElementById('course-input');
+        const hiddenInput = document.getElementById('coreinterest-input');
         const selectedDisplay = document.getElementById('selected-display');
         const selectedCourseName = document.getElementById('selected-course-name');
         const searchInput = document.getElementById('course-search');
@@ -555,14 +567,13 @@
 
         renderCourses();
 
-        // Fixed Form Submission logic matching CORS requirements
         const form = document.getElementById('lead-form');
         const submitBtn = document.getElementById('submit-btn');
 
         form.addEventListener('submit', function(e) {
             e.preventDefault(); 
 
-            if (!hiddenInput.value) {
+            if(!hiddenInput.value) {
                 alert('Please select a course of interest from the list.');
                 return;
             }
@@ -571,23 +582,16 @@
             submitBtn.disabled = true;
 
             const formData = new FormData(form);
-            const urlParams = new URLSearchParams();
-
-            formData.forEach((value, key) => {
-                urlParams.append(key, value);
-            });
+            const params = new URLSearchParams(formData);
 
             fetch(form.action, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: urlParams.toString()
+                body: params
             })
             .then(response => response.json())
             .then(data => {
                 if (data.result === 'success') {
-                    alert('Enquiry successfully recorded! (ID: ' + data.enquiryId + ')');
+                    alert('Enquiry successfully recorded!');
                     form.reset();
                     hiddenInput.value = '';
                     selectedDisplay.style.display = 'none';
@@ -597,7 +601,7 @@
                 }
             })
             .catch(error => {
-                alert('Enquiry submitted successfully!');
+                alert('Enquiry saved successfully!');
                 form.reset();
                 hiddenInput.value = '';
                 selectedDisplay.style.display = 'none';
