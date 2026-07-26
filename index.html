@@ -93,6 +93,60 @@
             font-size: 0.98rem;
         }
 
+        /* Group Admission Special Callout Banner */
+        .group-discount-banner {
+            background: linear-gradient(135deg, #003580 0%, #0d6efd 100%);
+            color: #ffffff;
+            padding: 16px 22px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(13, 110, 253, 0.2);
+        }
+
+        .group-discount-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Styling for the icon container so it stands out sharply against the blue background */
+        .group-icon-wrapper {
+            background-color: #ffc107;
+            color: #212529;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+
+        .group-discount-content p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .group-badge-tag {
+            background-color: #ffc107;
+            color: #212529;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
         /* Form Section */
         .form-section {
             background: white;
@@ -333,6 +387,7 @@
             header h1 { font-size: 1.8rem; }
             .form-section { padding: 20px; }
             .course-cards-grid { grid-template-columns: 1fr; }
+            .group-discount-banner { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
@@ -356,6 +411,18 @@
 
         <div class="form-section">
             <h2>Course Enquiry Form</h2>
+
+            <!-- Group Admission Special Callout Banner -->
+            <div class="group-discount-banner">
+                <div class="group-discount-content">
+                    <h4>
+                        <span class="group-icon-wrapper">👥</span> 
+                        Special Group Admission Offer!
+                    </h4>
+                    <p>Enrolling with friends or classmates? Avail heavy special discounts on group admissions.</p>
+                </div>
+                <div class="group-badge-tag">Ask Counselor for Details</div>
+            </div>
 
             <form id="lead-form" action="https://script.google.com/macros/s/AKfycbzI3LlBGUQzrIv_7xbmJK3toggzXkNlun2K_iKKFATR6BT84JTDHnc22Yzv8AGecYTl/exec" method="POST">
                 <input type="hidden" name="formType" value="enquiry">
@@ -454,7 +521,7 @@
                         </select>
                     </div>
 
-                    <!-- Lead Source (Replaced Counselor Field) -->
+                    <!-- Lead Source -->
                     <div class="form-group full-width">
                         <label for="lead-source">How Did You Hear About Us? (Source)</label>
                         <select id="lead-source" name="leadsource">
